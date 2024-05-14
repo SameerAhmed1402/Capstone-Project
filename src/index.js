@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { persistReducer } from "redux-persist";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { PersistGate } from "redux-persist/integration/react";
+import axios from "axios";
 import {
   persistStore,
   FLUSH,
@@ -39,6 +40,7 @@ const store = configureStore({
 });
 let persistor = persistStore(store);
 const root = ReactDOM.createRoot(document.getElementById("root"));
+axios.defaults.withCredentials = true;
 root.render(
   <BrowserRouter>
     <Provider store={store}>
